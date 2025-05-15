@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container .item {
+        background-color: aqua;
+      }
+      .main-container .item {
+        background-color: rgb(0, 255, 106);
+        /* padding: 10px; */
+      }
+      .main-container > .item {
+        background-color: rgb(255, 0, 132);
+        padding: 10px;
+      }
+      .button {
+        border: 0;
+        background-color: antiquewhite;
+        padding: 10px;
+      }
+
+      .button.active {
+        background-color: blue;
+        color: wheat;
+      }
+      .button.danger {
+        background-color: red;
+        color: white;
+      }
+
+      .item1 + .item2 {
+        background-color: aliceblue;
+      }
+
+      input[type="text"] {
+        border: 2px gray solid;
+        height: 100px;
+      }
+
+      .button:hover {
+        background-color: blueviolet;
+      }
+      .button:active {
+        background-color: orange;
+      }
+      .button:focus {
+        background-color: red;
+      }
+
+      .container .item:first-child {
+        background-color: bisque;
+      }
+
+      .container .item:last-child {
+        background-color: cornflowerblue;
+      }
+
+      .container .item:nth-child(2) {
+        background-color: khaki;
+      }
+
+      .intro::first-letter {
+        font-size: 40px;
+      }
+
+      .intro::before {
+        content: "before-";
+      }
+
+      .intro::after {
+        content: "-after";
+      }
+    </style>
+  </head>
+  <body>
+    Hello world
+    <div class="container">
+      Container
+      <div class="item">Item</div>
+    </div>
+    <div class="main-container">
+      Container
+      <div class="item">
+        Item
+        <div class="item">Sub Item</div>
+      </div>
+      <div class="item">Item</div>
+      <div class="item">Item</div>
+    </div>
+
+    <button class="button">Button</button>
+    <button class="button active">Active Button</button>
+    <button class="button danger">Danger Button</button>
+
+    <div class="item1">Item1</div>
+    <div class="item2">Item2</div>
+    <div class="item2">Item2</div>
+    <div class="item1">Item1</div>
+
+    <div>
+      input
+      <input type="text" name="firstname" id="" />
+      <input type="text" name="lastname" id="" />
+      <input type="text" name="description" id="" />
+    </div>
+
+    <div class="container">
+      <div class="item">item 1</div>
+      <div class="item">item 2</div>
+      <div class="item">item 3</div>
+      <div class="item">item 4</div>
+      <div class="item">item 5</div>
+    </div>
+
+    <div class="intro">Hello world</div>
+  </body>
+</html>
