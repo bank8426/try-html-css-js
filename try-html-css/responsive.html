@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .container {
+      background-color: rebeccapurple;
+      display: flex;
+    }
+
+    .container .item {
+      padding: 10px;
+      flex: 1;
+    }
+
+    .grid-container {
+      background-color: bisque;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .grid-container .item {
+      padding: 10px;
+      flex: 1;
+    }
+
+    .mobile,
+    .mobile-menu {
+      display: none;
+    }
+
+    /* tablet */
+    @media screen and (max-width: 768px) {
+      .container {
+        background-color: aqua;
+        flex-direction: column;
+      }
+
+      .grid-container {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .desktop {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .mobile-menu:hover+.mobile {
+        display: block;
+      }
+    }
+
+    /* mobile */
+    @media screen and (max-width: 640px) {
+      .container {
+        background-color: aqua;
+        flex-direction: column;
+      }
+
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .desktop ul {
+      display: flex;
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .desktop ul>li {
+      margin-right: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="desktop">
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Contact us</li>
+    </ul>
+  </div>
+
+
+  <div class="mobile-menu">Menu</div>
+  <div class="mobile">
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Contact us</li>
+    </ul>
+  </div>
+  Hello world flex
+  <div class="container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+  </div>
+
+  Hello world grid
+  <div class="grid-container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 4</div>
+    <div class="item">Item 5</div>
+  </div>
+  <picture>
+    <source media="(max-width: 768px)" srcset="
+          https://fastly.picsum.photos/id/941/200/200.jpg?hmac=kQpV3E7TgV1yMW4b1IDbV6zJqEvKVw9CTK4RkI14kmQ
+        " />
+    <img src="https://fastly.picsum.photos/id/25/200/200.jpg?hmac=G4ZRBi0qdWfQJQs_yxNQr_LJJlf0V1_Pdj8Tp41xsJU" alt="" />
+  </picture>
+</body>
+
+</html>
