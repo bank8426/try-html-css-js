@@ -1,244 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      body {
-        background-color: rgba(98, 201, 201, 0.589);
-        font-family: "kanit";
-      }
-      #register-header {
-        color: brown;
-        font-size: 32px;
-        font-weight: 800;
-        padding: 10px 0px 10px 10px;
-        background-color: antiquewhite;
-        margin: 10px 0 10px 0;
-        border: coral 6px solid;
-        text-align: center;
-      }
-      /* .form {
-        border: 2px blue solid;
-      } */
-      .header-form {
-        font-weight: 800;
-        width: 100px;
-      }
-      .gender {
-        display: inline-block;
-      }
-      .gender-flex {
-        display: flex;
-        /* flex-direction: row-reverse; */
-      }
-      .container {
-        display: flex;
-      }
-      .item-left {
-        background-color: rebeccapurple;
-        flex: 1;
-      }
-      .item-right {
-        background-color: blanchedalmond;
-        flex: 2;
-      }
-      .grid-container {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-      }
-      .grid-item {
-        background-color: chocolate;
-      }
-      .absolute {
-        position: absolute;
-        top: 0;
-        right: 0;
-      }
-      .fixed {
-        position: fixed;
-        top: 0;
-        right: 0;
-      }
-      .sticky {
-        position: sticky;
-        top: 0;
-        right: 0;
-      }
-      .float-left {
-        float: left;
-        background-color: wheat;
-      }
-      .float-right {
-        float: right;
-        background-color: wheat;
-      }
-      .box {
-        height: 200px;
-        width: 20vw;
-        background-color: azure;
-      }
-      .form-container {
-        width: 400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .flex {
-        display: flex;
-      }
-      .form-input {
-        margin-bottom: 10px;
-      }
 
-      input.form,
-      textarea {
-        border: 1px gainsboro solid;
-        width: 100%;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+</head>
 
-      .center {
-        text-align: center;
-      }
-      .button {
-        width: 100%;
-        height: 40px;
-        border: 0px;
-      }
-    </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="form-container">
-      <h1 id="register-header">Register Form</h1>
-      <div class="flex form-input">
-        <div class="header-form">Firstname</div>
-        <input class="form" type="text" />
-      </div>
-      <div class="flex form-input">
-        <div class="header-form">Lastname</div>
-        <input class="form" type="text" />
-      </div>
-      <div class="flex form-input">
-        <div class="header-form">Age</div>
-        <input class="form" type="number" name="year" min="0" max="100" />
-      </div>
-
-      <div class="gender-flex form-input">
-        <div class="header-form">Gender-flex</div>
-        <div><input type="radio" name="gender" />Male</div>
-        <div><input type="radio" name="gender" />Female</div>
-        <div><input type="radio" name="gender" />Other</div>
-      </div>
-      <div class="form-input">
-        Interest
-        <div><input type="checkbox" name="Interest" />Book</div>
-        <div><input type="checkbox" name="Interest" />Video Game</div>
-        <div><input type="checkbox" name="Interest" />Politic</div>
-      </div>
-      <div class="form-input">
-        Feedback
-        <div><textarea name="feedback"></textarea></div>
-      </div>
-      <div class="center"><button class="button">Submit</button></div>
+<body>
+  <div class="form-container">
+    <h1 id="register-header">Register Form</h1>
+    <div class="flex form-input">
+      <div class="header-form">Firstname</div>
+      <input class="form" type="text" />
+    </div>
+    <div class="flex form-input">
+      <div class="header-form">Lastname</div>
+      <input class="form" type="text" />
+    </div>
+    <div class="flex form-input">
+      <div class="header-form">Age</div>
+      <input class="form" type="number" name="year" min="0" max="100" />
     </div>
 
-    <div class="box">try view port</div>
-    <div class="sticky">Position sticky</div>
-    <div>
-      Gender(inline-block)
-      <div class="gender"><input type="radio" name="gender" />Male</div>
-      <div class="gender"><input type="radio" name="gender" />Female</div>
-      <div class="gender"><input type="radio" name="gender" />Other</div>
+    <div class="gender-flex form-input">
+      <div class="header-form">Gender-flex</div>
+      <div><input type="radio" name="gender" />Male</div>
+      <div><input type="radio" name="gender" />Female</div>
+      <div><input type="radio" name="gender" />Other</div>
     </div>
-    <div class="container">
-      <div class="item-left">Left flex</div>
-      <div class="item-right">Right flex</div>
+    <div class="form-input">
+      Interest
+      <div><input type="checkbox" name="Interest" />Book</div>
+      <div><input type="checkbox" name="Interest" />Video Game</div>
+      <div><input type="checkbox" name="Interest" />Politic</div>
     </div>
-
-    <div class="grid-container">
-      <div class="grid-item">grid 1</div>
-      <div class="grid-item">grid 2</div>
-      <div class="grid-item">grid 3</div>
-      <div class="grid-item">grid 4</div>
+    <div class="form-input">
+      Feedback
+      <div><textarea name="feedback"></textarea></div>
     </div>
+    <div class="center"><button class="button">Submit</button></div>
+  </div>
 
-    <div class="absolute">Position absolute</div>
-    <div class="fixed">Position fixed</div>
+  <div class="box">try view port</div>
+  <div class="sticky">Position sticky</div>
+  <div>
+    Gender(inline-block)
+    <div class="gender"><input type="radio" name="gender" />Male</div>
+    <div class="gender"><input type="radio" name="gender" />Female</div>
+    <div class="gender"><input type="radio" name="gender" />Other</div>
+  </div>
+  <div class="container">
+    <div class="item-left">Left flex</div>
+    <div class="item-right">Right flex</div>
+  </div>
 
-    <div class="float-left">
-      <img
-        src="https://fastly.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI"
-        alt="img in float left"
-      />
-      Float-left
-    </div>
-    <div>hello some text between float</div>
-    <div>hello some text between float</div>
-    <div>hello some text between float</div>
-    <div>hello some text between float</div>
-    <div>hello some text between float</div>
-    <div class="float-right">Float-right</div>
-    <div style="clear: both">Clear both float</div>
+  <div class="grid-container">
+    <div class="grid-item">grid 1</div>
+    <div class="grid-item">grid 2</div>
+    <div class="grid-item">grid 3</div>
+    <div class="grid-item">grid 4</div>
+  </div>
 
-    Hello World <br />
-    Hello World 2
-    <h1>Header 1</h1>
-    <h2>Header 2</h2>
-    <h3>Header 3</h3>
-    <h4>Header 4</h4>
-    <h5>Header 5</h5>
-    <h6>Header 6</h6>
+  <div class="absolute">Position absolute</div>
+  <div class="fixed">Position fixed</div>
 
-    <p>html p</p>
-    <p>html p</p>
-    <p>html p</p>
+  <div class="float-left">
+    <img src="https://fastly.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI"
+      alt="img in float left" />
+    Float-left
+  </div>
+  <div>hello some text between float</div>
+  <div>hello some text between float</div>
+  <div>hello some text between float</div>
+  <div>hello some text between float</div>
+  <div>hello some text between float</div>
+  <div class="float-right">Float-right</div>
+  <div style="clear: both">Clear both float</div>
 
-    <div>html div</div>
-    <div>html div</div>
-    <div>html div</div>
+  Hello World <br />
+  Hello World 2
+  <h1>Header 1</h1>
+  <h2>Header 2</h2>
+  <h3>Header 3</h3>
+  <h4>Header 4</h4>
+  <h5>Header 5</h5>
+  <h6>Header 6</h6>
 
-    <ul>
-      <li>Unorder 1</li>
-      <li>Unorder 2</li>
-      <li>Unorder 3</li>
-      <li>Unorder 4</li>
-    </ul>
+  <p>html p</p>
+  <p>html p</p>
+  <p>html p</p>
 
-    <ol>
-      <li>order 1</li>
-      <li>order 2</li>
-      <li>order 3</li>
-      <li>order 4</li>
-    </ol>
+  <div>html div</div>
+  <div>html div</div>
+  <div>html div</div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Table Head 1</th>
-          <th>Table Head 2</th>
-          <th>Table Head 3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Table Item 1</td>
-          <td>Table Item 1 feild 2</td>
-          <td>Table Item 1 feild 3</td>
-        </tr>
-        <tr>
-          <td>Table Item 2</td>
-          <td>Table Item 2 feild 2</td>
-          <td>Table Item 2 feild 3</td>
-        </tr>
-      </tbody>
-    </table>
+  <ul>
+    <li>Unorder 1</li>
+    <li>Unorder 2</li>
+    <li>Unorder 3</li>
+    <li>Unorder 4</li>
+  </ul>
 
-    <a href="https://google.com" target="_blank">Google Link</a>
-  </body>
+  <ol>
+    <li>order 1</li>
+    <li>order 2</li>
+    <li>order 3</li>
+    <li>order 4</li>
+  </ol>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Table Head 1</th>
+        <th>Table Head 2</th>
+        <th>Table Head 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Table Item 1</td>
+        <td>Table Item 1 feild 2</td>
+        <td>Table Item 1 feild 3</td>
+      </tr>
+      <tr>
+        <td>Table Item 2</td>
+        <td>Table Item 2 feild 2</td>
+        <td>Table Item 2 feild 3</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a href="https://google.com" target="_blank">Google Link</a>
+</body>
+
 </html>
