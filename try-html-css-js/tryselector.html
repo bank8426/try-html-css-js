@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div>Heloo world</div>
+
+
+  Firstname :<input type="text" class="input" id="firstname" name="firstname" onkeyup="changeFirstName()"
+    value="default">
+  Lastname :<input type="text" class="input" id="lastname" name="lastname" value="default lastname">
+
+
+
+  <div>Interest :</div>
+  <input type="checkbox" name="interest" value="book"> Book
+  <input type="checkbox" name="interest" value="game"> Game
+  <input type="checkbox" name="interest" value="sport"> Sport
+  <input type="checkbox" name="interest" value="video"> Video
+
+  <button id="submit-interest-button" onclick="submitInterest(event)">Submit Interest</button>
+
+  <div>
+    <h2>Your interest :</h2>
+    <div id="interest-content">
+
+
+    </div>
+  </div>
+
+  <div onclick="userClickDIV()">Click div</div>
+
+  <input type="radio" name="gender" value="male" onchange="changeGender()"> Male
+  <input type="radio" name="gender" value="female" onchange="changeGender()"> Female
+  <input type="radio" name="gender" value="other" onchange="changeGender()"> Other
+
+  <button onclick="clickButt()">Butt 1</button>
+  <button id="butt2">Butt 2</button>
+
+  <div id="some-div">Some <b>text</b> <span style="display: none;">hidden</span></div>
+
+  <script>
+    console.log("Heloo world");
+    let firstnameDOM = document.getElementById("firstname")
+    let inputsDOM = document.getElementsByClassName("input")
+    let inputFirstQuerySelectorDOM = document.querySelector("input[name=lastname]")
+    let inputsQuerySelectorAllDOM = document.querySelectorAll(".input")
+    let interestCheckboxesDOM = document.querySelectorAll("input[name=interest]")
+    let gender = ''
+    let firstname = ''
+    let butt2DOM = document.getElementById("butt2")
+    let someDIVDOM = document.getElementById("some-div")
+    let interestContentDOM = document.getElementById("interest-content")
+
+
+    console.log("someDIVDOM.innerText");
+    console.log(someDIVDOM.innerText);
+    console.log("someDIVDOM.textContent");
+    console.log(someDIVDOM.textContent);
+    console.log("someDIVDOM.innerHTML");
+    console.log(someDIVDOM.innerHTML);
+
+    butt2DOM.addEventListener("click", () => {
+      console.log("Butt 2");
+      someDIVDOM.innerText = "dwdwdwdwdwdw"
+
+      console.log("someDIVDOM.innerText");
+      console.log(someDIVDOM.innerText);
+      console.log("someDIVDOM.textContent");
+      console.log(someDIVDOM.textContent);
+      console.log("someDIVDOM.innerHTML");
+      console.log(someDIVDOM.innerHTML);
+    })
+
+    function submitInterest(event) {
+      console.log("interestCheckboxesDOM");
+      console.log(interestCheckboxesDOM);
+      let submitInterestButtonDOM = event.target
+      let newInnerHTML = '<ul>'
+
+      interestCheckboxesDOM.forEach(checkbox => {
+        if (checkbox.checked)
+          newInnerHTML += `<li>${checkbox.value}</li>`
+
+        checkbox.disabled = true
+      })
+      console.log("interest");
+
+      newInnerHTML += '</ul>'
+      interestContentDOM.style.border = "4px solid aqua"
+      interestContentDOM.innerHTML = newInnerHTML
+      submitInterestButtonDOM.setAttribute("disabled", "true")
+
+    }
+
+    function userClickDIV() {
+      console.log("zxzxzxzxzx");
+
+    }
+
+    function clickButt() {
+      console.log("Butt 1");
+      someDIVDOM.innerHTML = 'Some <b>text</b> <span style="display: none;">hidden</span> again!!'
+      console.log("someDIVDOM.innerText");
+      console.log(someDIVDOM.innerText);
+      console.log("someDIVDOM.textContent");
+      console.log(someDIVDOM.textContent);
+      console.log("someDIVDOM.innerHTML");
+      console.log(someDIVDOM.innerHTML);
+    }
+
+    function changeFirstName() {
+
+      firstname = firstnameDOM.value
+      console.log(firstname);
+
+    }
+
+    function changeGender() {
+      let genderCheckboxesDOM = document.querySelectorAll("input[name=gender]")
+      genderCheckboxesDOM.forEach(dom => {
+        if (dom.checked) {
+          gender = dom.value
+        }
+      })
+      console.log("change gender to : " + gender);
+
+    }
+
+    for (let i = 0; i < interestCheckboxesDOM.length; i++) {
+      console.log(interestCheckboxesDOM[i]);
+    }
+
+    // console.log(firstnameDOM);
+    // console.log(firstnameDOM.value);
+    // console.log(inputsDOM);
+    // console.log(inputsDOM.value);
+    // console.log("inputFirstQuerySelectorDOM");
+    // console.log(inputFirstQuerySelectorDOM);
+    // console.log(inputFirstQuerySelectorDOM.value);
+    // console.log("inputsQuerySelectorAllDOM");
+    // console.log(inputsQuerySelectorAllDOM);
+    // console.log(inputFirstQuerySelectorDOM.value);
+    // console.log(interestCheckboxesDOM);
+    // console.log(interestCheckboxesDOM.value);
+
+
+    for (let i = 0; i < inputsDOM.length; i++) {
+      console.log(inputsDOM[i]);
+      console.log(inputsDOM[i].value);
+
+    }
+
+
+
+  </script>
+</body>
+
+</html>
