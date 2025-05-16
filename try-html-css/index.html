@@ -18,44 +18,47 @@
     <h1 id="register-header">Register Form</h1>
     <div class="flex form-input">
       <div class="header-form">Firstname</div>
-      <input class="form" type="text" />
+      <input class="form" type="text" name="firstname" />
     </div>
     <div class="flex form-input">
       <div class="header-form">Lastname</div>
-      <input class="form" type="text" />
+      <input class="form" type="text" name="lastname" />
     </div>
     <div class="flex form-input">
       <div class="header-form">Age</div>
-      <input class="form" type="number" name="year" min="0" max="100" />
+      <input class="form" type="number" name="age" min="0" max="100" />
     </div>
 
     <div class="gender-flex form-input">
       <div class="header-form">Gender-flex</div>
-      <div><input type="radio" name="gender" />Male</div>
-      <div><input type="radio" name="gender" />Female</div>
-      <div><input type="radio" name="gender" />Other</div>
+      <div><input type="radio" name="gender" value="Male" />Male</div>
+      <div><input type="radio" name="gender" value="Female" />Female</div>
+      <div><input type="radio" name="gender" value="Other" />Other</div>
     </div>
     <div class="form-input">
       Interest
-      <div><input type="checkbox" name="Interest" />Book</div>
-      <div><input type="checkbox" name="Interest" />Video Game</div>
-      <div><input type="checkbox" name="Interest" />Politic</div>
+      <div><input type="checkbox" name="interest" value="Book" />Book</div>
+      <div><input type="checkbox" name="interest" value="Video Game" />Video Game</div>
+      <div><input type="checkbox" name="interest" value="Politic" />Politic</div>
     </div>
     <div class="form-input">
       Feedback
       <div><textarea name="feedback"></textarea></div>
     </div>
-    <div class="center"><button class="button">Submit</button></div>
+    <div class="center"><button id="submit-button" onclick="submitForm()" class="button">Submit</button></div>
   </div>
+
+
+
 
   <div class="box">try view port</div>
   <div class="sticky">Position sticky</div>
-  <div>
+  <!-- <div>
     Gender(inline-block)
-    <div class="gender"><input type="radio" name="gender" />Male</div>
-    <div class="gender"><input type="radio" name="gender" />Female</div>
-    <div class="gender"><input type="radio" name="gender" />Other</div>
-  </div>
+    <div class="gender"><input type="radio" name="gender-inline" />Male</div>
+    <div class="gender"><input type="radio" name="gender-inline" />Female</div>
+    <div class="gender"><input type="radio" name="gender-inline" />Other</div>
+  </div> -->
   <div class="container">
     <div class="item-left">Left flex</div>
     <div class="item-right">Right flex</div>
@@ -138,6 +141,7 @@
   </table>
 
   <a href="https://google.com" target="_blank">Google Link</a>
+  <script src="index.js"></script>
 </body>
 
 </html>
