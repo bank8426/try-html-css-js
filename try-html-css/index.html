@@ -14,46 +14,48 @@
 </head>
 
 <body>
-  <div class="form-container">
-    <h1 id="register-header">Register Form</h1>
-    <div class="flex form-input">
-      <div class="header-form">Firstname</div>
-      <input class="form" type="text" name="firstname" />
-    </div>
-    <div class="flex form-input">
-      <div class="header-form">Lastname</div>
-      <input class="form" type="text" name="lastname" />
-    </div>
-    <div class="flex form-input">
-      <div class="header-form">Age</div>
-      <input class="form" type="number" name="age" min="0" max="100" />
-    </div>
+  <a href="index.html">
+    < Go to User management</a>
+      <div class="form-container">
+        <h1 id="register-header">Register Form</h1>
+        <div class="flex form-input">
+          <div class="header-form">Firstname</div>
+          <input class="form" type="text" name="firstname" />
+        </div>
+        <div class="flex form-input">
+          <div class="header-form">Lastname</div>
+          <input class="form" type="text" name="lastname" />
+        </div>
+        <div class="flex form-input">
+          <div class="header-form">Age</div>
+          <input class="form" type="number" name="age" min="0" max="100" />
+        </div>
 
-    <div class="gender-flex form-input">
-      <div class="header-form">Gender-flex</div>
-      <div><input type="radio" name="gender" value="Male" />Male</div>
-      <div><input type="radio" name="gender" value="Female" />Female</div>
-      <div><input type="radio" name="gender" value="Other" />Other</div>
-    </div>
-    <div class="form-input">
-      Interest
-      <div><input type="checkbox" name="interest" value="Book" />Book</div>
-      <div><input type="checkbox" name="interest" value="Video Game" />Video Game</div>
-      <div><input type="checkbox" name="interest" value="Politic" />Politic</div>
-    </div>
-    <div class="form-input">
-      Feedback
-      <div><textarea name="feedback"></textarea></div>
-    </div>
-    <div id="message" class="message">
-    </div>
+        <div class="gender-flex form-input">
+          <div class="header-form">Gender-flex</div>
+          <div><input type="radio" name="gender" value="Male" />Male</div>
+          <div><input type="radio" name="gender" value="Female" />Female</div>
+          <div><input type="radio" name="gender" value="Other" />Other</div>
+        </div>
+        <div class="form-input">
+          Interest
+          <div><input type="checkbox" name="interest" value="Book" />Book</div>
+          <div><input type="checkbox" name="interest" value="Video Game" />Video Game</div>
+          <div><input type="checkbox" name="interest" value="Politic" />Politic</div>
+        </div>
+        <div class="form-input">
+          Feedback
+          <div><textarea name="feedback"></textarea></div>
+        </div>
+        <div id="message" class="message">
+        </div>
 
-    <div class="center"><button id="submit-button" onclick="submitForm()" class="button">Submit</button></div>
-  </div>
+        <div class="center"><button id="submit-button" onclick="submitForm()" class="button">Submit</button></div>
+      </div>
 
-  <a href="https://google.com" target="_blank">Google Link</a>
-  <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
-  <script src="index.js"></script>
+      <a href="https://google.com" target="_blank">Google Link</a>
+      <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+      <script src="index.js"></script>
 </body>
 
 </html>
