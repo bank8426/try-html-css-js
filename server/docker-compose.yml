@@ -1,18 +1,18 @@
 services:
-  # node-server:
-  #   container_name: node
-  #   build: .
-  #   ports:
-  #     - "8000:${BACKEND_PORT}"
-  #   depends_on:
-  #     - db
-  #   environment:
-  #     - PMA_HOST=${PMA_HOST}
-  #     - PMA_PORT=${DB_PORT}
-  #     - PMA_USER=${PMA_USER}
-  #     - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD}
-  #     - MYSQL_DATABASE=${MYSQL_DATABASE}
-  #     - BACKEND_PORT=${BACKEND_PORT}
+  try-js-server:
+    container_name: try-js-server
+    build: .
+    ports:
+      - "8000:${BACKEND_PORT}"
+    depends_on:
+      - try-js-db
+    environment:
+      - PMA_HOST=${PMA_HOST}
+      - PMA_PORT=${DB_PORT}
+      - PMA_USER=${PMA_USER}
+      - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - BACKEND_PORT=${BACKEND_PORT}
   try-js-db:
     image: mysql:latest
     container_name: try-js-db

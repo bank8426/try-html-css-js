@@ -1,117 +1,136 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const mysql = require("mysql2/promise");
+
 const app = express();
 app.use(bodyParser.json());
 const port = 8000;
 
+// TODO remove
 let users = [];
 let count = 1;
 
-app.get("/users", (req, res) => {
-  let filterUsers = users.map((user) => ({
-    firstname: user.firstname,
-    lastname: user.lastname,
-    fullname: user.firstname + " " + user.lastname,
-    id: user.id,
-  }));
-  res.json(filterUsers);
-});
+let conn = null;
 
-app.get("/users/:id", (req, res) => {
-  let id = req.params.id;
+const initMySQL = async () => {
+  conn = await mysql.createConnection({
+    // TODO change to try-js-db when use env
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "tutorial",
+    port: 3306,
+  });
+};
 
-  let foundIndex = findUser(id);
-
-  console.log(foundIndex);
-
-  if (foundIndex === -1) {
-    return res.send({ error: "not found user with id : ", id });
+app.get("/testdb", async (req, res) => {
+  try {
+    let result = await conn.query("SELECT * FROM users");
+    console.log(result);
+    res.json(result[0]);
+  } catch (error) {
+    console.error("Error fetching users: ", error.message);
+    res.status(500).json({ error: "Error fetching users" });
   }
-
-  res.json({
-    user: users[foundIndex],
-  });
 });
 
-app.post("/users", (req, res) => {
-  let user = req.body;
-  console.log("user");
-  console.log(user);
-  user.id = count;
-  users.push(user);
-  count++;
-
-  console.log("users");
-  console.log(users);
-
-  res.json({
-    message: "success",
-    user,
-  });
-});
-
-app.put("/users/:id", (req, res) => {
-  let id = req.params.id;
-  let user = req.body;
-
-  let foundIndex = findUser(id);
-
-  console.log(foundIndex);
-
-  if (foundIndex === -1) {
-    return res.send({ error: "not found user with id : ", id });
+app.get("/users", async (req, res) => {
+  try {
+    let result = await conn.query("SELECT id,firstname,lastname FROM users");
+    console.log(result);
+    res.json(result[0]);
+  } catch (error) {
+    console.error("Error fetching users: ", error.message);
+    res.status(500).json({ error: "Error fetching users" });
   }
-
-  users[foundIndex].firstname = user.firstname || users[foundIndex].firstname;
-  users[foundIndex].lastname = user.lastname || users[foundIndex].lastname;
-  users[foundIndex].age = user.age || users[foundIndex].age;
-
-  res.json({
-    message: `update user id ${id} successfully`,
-    user: users[foundIndex],
-  });
 });
 
-app.patch("/users/:id", (req, res) => {
+app.get("/users/:id", async (req, res) => {
   let id = req.params.id;
+
+  try {
+    let result = await conn.query("SELECT * FROM users WHERE id=?", [id]);
+    console.log(result);
+
+    if (result[0].length == 0) {
+      console.log("asdasdasdas");
+
+      throw { message: "Specific user not found", statusCode: 404 };
+    }
+
+    res.json(result[0][0]);
+  } catch (error) {
+    let statusCode = error.statusCode || 500;
+    let message = error.message || "Error fetching specific user";
+    console.error("Error fetching specific user: ", error.message);
+    res.status(statusCode).json({ error: message });
+  }
+});
+
+app.post("/users", async (req, res) => {
   let user = req.body;
 
-  let foundIndex = findUser(id);
+  console.log("user", user);
 
-  if (foundIndex === -1) {
-    return res.send({ error: "not found user with id : ", id });
+  try {
+    let result = await conn.query("INSERT INTO users SET ?", user);
+    console.log(result);
+
+    res.json({
+      message: "success",
+    });
+  } catch (error) {
+    console.error("Error creating users: ", error.message);
+    res.status(500).json({ error: "Error creating users" });
   }
-
-  if (user.firstname) users[foundIndex].firstname = user.firstname;
-  if (user.lastname) users[foundIndex].lastname = user.lastname;
-  if (user.age) users[foundIndex].age = user.age;
-
-  res.json({
-    message: `patch user id ${id} successfully`,
-    user: users[foundIndex],
-  });
 });
 
-app.delete("/users/:id", (req, res) => {
+app.put("/users/:id", async (req, res) => {
+  let user = req.body;
   let id = req.params.id;
-  let foundIndex = findUser(id);
+  console.log("user", user);
 
-  if (foundIndex === -1) {
-    return res.send({ error: "not found user with id : ", id });
+  try {
+    let result = await conn.query("UPDATE users SET ? WHERE id=?", [user, id]);
+    console.log("result");
+    console.log(result);
+
+    if (result[0].affectedRows == 0) {
+      throw { message: "Specific user not found", statusCode: 404 };
+    }
+    res.json({
+      message: "Update success",
+    });
+  } catch (error) {
+    let statusCode = error.statusCode || 500;
+    let message = error.message || "Error updating specific user";
+    console.error("Error updating specific user: ", error.message);
+    res.status(statusCode).json({ error: message });
   }
-
-  let foundUser = users.splice(foundIndex, 1);
-
-  res.json({
-    message: `delete user id ${id} successfully`,
-    user: foundUser,
-  });
 });
 
-function findUser(id) {
-  return users.findIndex((user) => user.id == id);
-}
+app.delete("/users/:id", async (req, res) => {
+  let id = req.params.id;
 
-app.listen(port, (req, res) => {
+  try {
+    let result = await conn.query("DELETE FROM users WHERE id=?", [id]);
+    console.log(result);
+
+    if (result[0].affectedRows == 0) {
+      throw { message: "Specific user not found", statusCode: 404 };
+    }
+
+    res.json({ message: "Delete success" });
+  } catch (error) {
+    let statusCode = error.statusCode || 500;
+    let message = error.message || "Error deleting specific user";
+    console.error("Error deleting specific user: ", error.message);
+    res.status(statusCode).json({ error: message });
+  }
+});
+
+app.listen(port, async (req, res) => {
+  await initMySQL();
+
   console.log("http server run at " + port);
 });
