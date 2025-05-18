@@ -119,6 +119,25 @@ textarea {
   border: 0px;
 }
 
+.message {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: lightgrey;
+  display: none;
+}
+
+.message.success {
+  background-color: lightgreen;
+  display: block;
+
+}
+
+.message.danger {
+  background-color: lightcoral;
+  display: block;
+
+}
+
 @media screen and (max-width: 768px) {
   .flex {
     flex-direction: column;

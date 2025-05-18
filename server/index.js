@@ -24,16 +24,18 @@ const initMySQL = async () => {
   });
 };
 
-app.get("/testdb", async (req, res) => {
-  try {
-    let result = await conn.query("SELECT * FROM users");
-    console.log(result);
-    res.json(result[0]);
-  } catch (error) {
-    console.error("Error fetching users: ", error.message);
-    res.status(500).json({ error: "Error fetching users" });
-  }
-});
+const validateData = (user) => {
+  let errors = [];
+
+  if (!user.firstname) errors.push("Firstname");
+  if (!user.lastname) errors.push("Lastname");
+  if (!user.age) errors.push("Age");
+  if (!user.gender) errors.push("Gender");
+  if (!user.interest) errors.push("Interests");
+  if (!user.feedback) errors.push("Feedback");
+
+  return errors;
+};
 
 app.get("/users", async (req, res) => {
   try {
@@ -70,10 +72,20 @@ app.get("/users/:id", async (req, res) => {
 
 app.post("/users", async (req, res) => {
   let user = req.body;
+  let validateResult = validateData(user);
 
   console.log("user", user);
+  console.log("validateResult", validateResult);
 
   try {
+    if (validateResult.length > 0) {
+      throw {
+        message: "Please make sure all fields are filled correctly",
+        statusCode: 400,
+        errors: validateResult,
+      };
+    }
+
     let result = await conn.query("INSERT INTO users SET ?", user);
     console.log(result);
 
@@ -81,8 +93,11 @@ app.post("/users", async (req, res) => {
       message: "success",
     });
   } catch (error) {
+    let errorMessage = error.message || "Something went wrong";
+    let errors = error?.errors || [];
+    let statusCode = error.statusCode || 500;
     console.error("Error creating users: ", error.message);
-    res.status(500).json({ error: "Error creating users" });
+    res.status(statusCode).json({ message: errorMessage, errors: errors });
   }
 });
 
