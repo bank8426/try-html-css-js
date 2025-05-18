@@ -1,9 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql2/promise");
+const cors = require("cors");
 
 const app = express();
-app.use(bodyParser.json());
+app.use(bodyParser.json(), cors());
 const port = 8000;
 
 // TODO remove
